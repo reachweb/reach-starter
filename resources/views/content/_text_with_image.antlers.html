@@ -1,0 +1,22 @@
+<div class="container m-y-basic">
+    <div class="grid grid-cols-12 gap-y-6 lg:gap-y-0 lg:gap-x-8 2xl:gap-x-12 3xl:gap-x-16 bg-white rounded-[36px] overflow-hidden">
+        <div class="p-4 xl:p-8 col-span-12 lg:col-span-7 {{ if image_position == 'left' }}lg:order-2{{ /if }}">
+            <div class="bard-text ">
+                {{ text }}
+            </div>
+        </div>
+        <div class="col-span-12 lg:col-span-5 {{ if image_position == 'left' }}lg:order-1{{ /if }}">
+            {{ image }}
+            <img 
+                src="{{ glide:url preset="large" }}" 
+                srcset="{{ glide:url preset="small" }} 720w,
+                    {{ glide:url preset="medium" }} 1400w"
+                sizes="(max-width: 720px) 720px, (max-width: 1400px) 1400px"
+                alt="{{ alt }}" 
+                class="w-full h-full object-cover" 
+                loading="lazy"
+            >
+            {{ /image }}
+        </div>
+    </div>
+</div>

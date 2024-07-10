@@ -1,0 +1,14 @@
+{{ partial:blocks/inside_header }}
+
+<div class="bg-salt-bg py-basic">
+    <div class="container">
+        <div class="my-inside">
+            {{ partial:blocks/breadcrumbs }}
+        </div>
+    </div>
+    <div class="my-inside">
+        {{ overview }}
+            {{ partial src="content/{type}" }}
+        {{ /overview }}
+    </div>
+</div>

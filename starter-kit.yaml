@@ -1,0 +1,22 @@
+export_paths:
+  - content
+  - config/statamic/assets.php
+  - config/statamic/cp.php
+  - config/statamic/system.php
+  - resources/blueprints
+  - resources/fieldsets
+  - resources/forms
+  - resources/css/site.css
+  - resources/js/site.js
+  - resources/svg
+  - resources/users
+  - resources/views
+  - resources/sites.yaml
+  - public/build
+  - package.json
+  - fontVariationSettingsPlugin.js
+  - postcss.config.cjs
+  - tailwind.config.js
+  - vite.config.js
+dependencies:
+  jonassiewertsen/statamic-livewire: ^3.6

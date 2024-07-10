@@ -1,0 +1,29 @@
+<div class="my-basic container grid grid-cols-12 gap-y-4 md:gap-x-6 xl:gap-x-12">
+    <div class="col-span-12 md:col-span-4 md:order-2">
+        <div class="rounded-[48px] bg-white p-4 lg:p-6 xl:p-8">
+            <div class="bard-text">
+                {{ text }}
+            </div>
+            <div class="pt-4 lg:pt-8">
+                <div class="text-lg xl:text-xl tracking-wider font-serif font-bold font-wide uppercase mb-4 lg:mb-8">
+                    {{ "Contact" | trans }}
+                </div>
+                <div class="flex items-center mb-3 lg:mb-5">
+                    {{ svg src="phone" class="w-6 h-6 mr-4 stroke-black" }}
+                    <a href="tel:{{ site_config:telephone }}" class="lg:text-lg hover:text-salt-yellow transition-colors duration-300">
+                        {{ site_config:telephone }}
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    {{ svg src="email" class="w-6 h-6 mr-4 stroke-black" }}
+                    <a href="mailto:{{ site_config:email }}" class="lg:text-lg hover:text-salt-yellow transition-colors duration-300">
+                        {{ site_config:email }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-span-12 mt-4 md:mt-0 md:col-span-8 md:order-1 md:pr-8 2xl:pr-12">
+        {{ partial:form/form_component :form_handle="form:handle" }}
+    </div>
+</div>

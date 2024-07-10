@@ -1,0 +1,17 @@
+<input 
+    x-data
+    class="form-input px-4 py-2 bg-zinc-100 border border-zinc-100 rounded-md w-full focus:ring-orange-600 focus:border-orange-600" 
+    x-bind:id="field.handle" 
+    type="text" 
+    x-model="submitFields[field.handle]" 
+    x-ref="datepicker"
+    x-init="flatpickr($refs.datepicker, {
+        enableTime: true,
+        minuteIncrement: 5,
+        defaultHour: 12,
+        defaultMinute: 0,
+        disableMobile: true,
+        minDate: new Date(),
+    });"
+>
+

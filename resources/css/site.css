@@ -1,0 +1,72 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* This is all you. */
+/* This is all you. */
+.my-basic {
+    @apply my-8 lg:my-12 xl:my-20 3xl:my-28;
+}
+
+.my-inside {
+    @apply my-6 lg:my-10 xl:my-12 3xl:my-16;
+}
+
+.py-basic {
+    @apply py-8 lg:py-12 3xl:py-16;
+}
+
+.pt-basic {
+    @apply pt-8 lg:pt-12 3xl:pt-16;
+}
+
+.py-inside {
+    @apply py-6 lg:py-10 xl:py-12 3xl:py-16;
+}
+
+.py-home {
+    @apply py-10 lg:py-14 3xl:py-20;
+}
+
+.site-padding {
+    @apply px-4 lg:px-8 xl:px-16;
+}
+
+.pswp__button--zoom {
+    display: none !important;
+}
+
+.swiper-scrollbar-drag {
+    position: absolute;
+    top: -3px;
+    height: 6px;
+    cursor: pointer;
+}
+
+.some-scrollbar > .swiper-scrollbar-drag {
+    @apply bg-blue-500;
+}
+
+@layer {
+    .bard-text {
+        @apply lg:text-lg leading-snug;  
+    }
+    .bard-text a {
+        @apply !text-blue-700 !underline hover:!text-black transition-colors duration-300;  
+    }
+    .bard-text > p {
+        @apply !mb-4;
+    }
+    .bard-text > h3 {
+        @apply font-bold !mb-6 !text-2xl;
+    }
+    .bard-text strong {
+        @apply font-bold;
+    }
+    .strong > strong {
+        @apply font-bold;
+    }
+    .vertical-text {
+        writing-mode: vertical-lr;
+    }
+}

@@ -1,0 +1,36 @@
+<div class="relative">
+    <swiper-container class="destinations-slider" init="false">
+        {{ items }}
+        <swiper-slide class="w-[90%] md:w-[80%] xl:w-[40%]" lazy="true" scrollbar="true">
+            {{ partial:destinations/slider_item }}
+        </swiper-slide>
+        {{ /items }}
+    </swiper-container>
+</div>
+
+{{ push:scripts }}
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        var destinationsSlider = document.querySelector(".destinations-slider");
+        Object.assign(destinationsSlider, {
+            spaceBetween: 16,
+            slidesPerView: "auto",
+            navigation: {
+                nextEl: ".destinations-button-next",
+                prevEl: ".destinations-button-prev",
+            },
+            scrollbar: {
+                el: ".destinations-scrollbar",
+                draggable: true,
+            },
+            injectStyles: [
+            `
+                .swiper {
+                    overflow: visible !important;
+                }
+            `,],
+        });
+        destinationsSlider.initialize();
+    });
+</script>
+{{ /push:scripts }}

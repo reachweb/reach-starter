@@ -1,0 +1,200 @@
+{{ form:create in="{ form_handle }" x-data="formHandler" x-ref="form" @submit.prevent="formSubmit" }}
+<div 
+    class="grid grid-cols-2 gap-x-6" 
+    x-data="formFields({{ fields | to_json | entities }}, '{{ honeypot }}')" 
+    x-modelable="submitFields" 
+    x-model="submitData" 
+    x-show="! successMessage" 
+    x-transition.opacity
+>
+    <template x-for="field in fields" x-bind:key="field.handle">
+        <div x-bind:class="{ [width(field.width)]: true, 'special-field': field.handle == honeypot }" class="py-3 lg:py-4">            
+            <template x-if="field.instructions !== 'hide_display'">
+                <div class="flex items-center">
+                    <label class="uppercase font-semibold text-sm" x-text="field.display" x-bind:for="field.handle"></label>
+                    <template x-if="field.append">
+                        <span class="font-semibold ml-1 text-sm" x-text="field.append"></span>
+                    </template>
+                </div>
+            </template>      
+            <template x-if="fieldType(field) == 'text'">
+                <div class="mt-1">
+                    {{ partial:form/fieldtypes/text }}
+                </div>
+            </template>
+            <template x-if="fieldType(field) == 'date'">
+                <div class="mt-1">
+                    {{ partial:form/fieldtypes/date }}
+                </div>
+            </template>
+            <template x-if="fieldType(field) == 'time'">
+                <div class="mt-1">
+                    {{ partial:form/fieldtypes/time }}
+                </div>
+            </template>
+            <template x-if="fieldType(field) == 'integer'">
+                <div class="mt-1">
+                    {{ partial:form/fieldtypes/integer }}
+                </div>
+            </template>     
+            <template x-if="fieldType(field) == 'telephone'">
+                <div class="mt-1">
+                    {{ partial:form/fieldtypes/telephone }}
+                </div>
+            </template>
+            <template x-if="fieldType(field) == 'radio'">
+                <div class="mt-1">
+                    {{ partial:form/fieldtypes/radio }}
+                </div>
+            </template>
+            <template x-if="fieldType(field) == 'checkboxes'">
+                <div class="mt-1">
+                    {{ partial:form/fieldtypes/checkboxes }}
+                </div>
+            </template>            
+            <template x-if="fieldType(field) == 'select'">
+                <div class="mt-1">
+                    {{ partial:form/fieldtypes/select }}
+                </div>
+            </template>
+            <template x-if="fieldType(field) == 'textarea'">
+                <div class="mt-1">
+                    {{ partial:form/fieldtypes/textarea }}
+                </div>
+            </template>
+            <div class="mt-1 text-red-600" x-show="field.handle in errors" x-text="errors[field.handle]" x-transition></div>
+        </div>
+    </template>
+</div>
+<div class="w-full">
+    <div class="my-1 text-center text-red-600" x-show="fatalError" x-cloak>There is a technical problem with our form. Please contact us using email.</div>
+</div>
+<div class="w-full py-4">
+    <button 
+        class="relative inline-flex items-center justify-center px-6 lg:px-8 xl:px-12 py-3 bg-salt-blue rounded-[32px] group
+        border border-salt-blue group text-salt-bg transition-colors duration-300 hover:bg-transparent hover:text-salt-yellow overflow-hidden
+        hover:border-salt-yellow w-full" 
+        x-bind:class="{ 'cursor-not-allowed opacity-50': disableSubmit }"
+        type="submit"
+        x-bind:disabled="disableSubmit"
+        x-show="! successMessage" 
+    >
+        <span class="font-anton xl:text-lg uppercase tracking-wider group-hover:animate-moveup">{{ "Get in touch" | trans }}</span>
+    </button>
+</div>
+<div class="text-2xl text-center my-4" x-show="successMessage" x-transition.opacity x-cloak x-text="successMessage"></div>
+{{ /form:create }}
+
+{{ push:scripts }}
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('formFields', (fields, honeypot) => ({
+            init() {
+                this.honeypot = honeypot
+                this.fields = fields
+                let formFields = {}            
+                for (const field of fields) {
+                    Object.assign(formFields, {[field.handle]: ''})
+                }                
+                this.submitFields = formFields
+            },
+
+            submitFields: {},
+            fields: [],
+            honeypot: '',
+
+            fieldType(field) {
+                if (field.input_type == 'text' && field.type == 'text') {
+                    return 'text'
+                }
+                if (field.input_type == 'email' && field.type == 'text') {
+                    return 'text'
+                }
+                if (field.input_type == 'date' && field.type == 'text') {
+                    return 'date'
+                }
+                if (field.input_type == 'tel' && field.type == 'text') {
+                    return 'telephone'
+                }
+                if (field.input_type == 'time' && field.type == 'text') {
+                    return 'time'
+                }
+                if (field.type == 'integer') {
+                    return 'integer'
+                }
+                if (field.type == 'radio') {
+                    return 'radio'
+                }                
+                if (field.type == 'checkboxes') {
+                    return 'checkboxes'
+                }
+                if (field.type == 'select') {
+                    return 'select'
+                }
+                if (field.type == 'textarea') {
+                    return 'textarea'
+                }
+            },
+            width(percent) {
+                if (percent == '100') {
+                    return 'col-span-2'
+                }
+                if (percent == '50') {
+                    return 'col-span-2 lg:col-span-1'
+                }
+            }
+        }))
+        Alpine.data('formHandler', () => ({
+            submitData: {},
+            errors: {},
+            fatalError: false,
+            disableSubmit: false,
+            successMessage: false,
+
+            toggleSubmit() {
+                this.disableSubmit = !this.disableSubmit
+            },
+            formSubmit() {
+                this.clearErrors()
+                this.toggleSubmit()
+
+                Object.assign(this.submitData, {'_token': '{{ csrf_token }}'})
+            
+                const url = this.$refs.form.action
+
+                  window.axios.post(url, this.submitData)
+                    .then(response => {
+                        this.handleSuccess(response.data)
+                    })
+                    .catch(error => {
+                        this.handleErrors(error.response)
+                    })
+            },
+            handleSuccess(data) {
+                if (data.success == true) {
+                    this.successMessage = 'Thank you for your message! We will get back to you shortly!'
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        event: 'formSubmission',
+                        userData: {
+                            userEmail: this.submitData.email,
+                            userPhone: this.submitData.phone ?? ''
+                        }
+                    });
+                }
+            },
+            handleErrors(errors) {
+                if (errors.status == 500) {
+                    this.fatalError = true
+                } else {
+                    this.errors = errors.data.errors
+                }
+                this.toggleSubmit()
+            },
+            clearErrors() {
+                this.errors = {}
+            }
+        }))
+    })
+</script>
+{{ /push:scripts }}

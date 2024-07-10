@@ -1,0 +1,27 @@
+<div class="container grid grid-cols-12 py-inside">
+    <div class="col-span-12 md:col-span-3 lg:col-start-2">
+        <h3 class="text-salt-blue font-anton text-xl lg:text-2xl 2xl:text-3xl tracking-widest">
+            {{ title_stylized }}
+        </h3>        
+    </div>
+    <div class="mt-5 md:mt-0 md:pl-12 lg:pl-0 col-span-12 md:col-span-8 lg:col-span-6 lg:col-start-6">
+        {{ items }}
+        <div class="bg-salt-bg py-4 px-6 rounded-3xl mb-4 lg:mb-6" {{if index == 0 }}x-data="{ expanded: true }"{{else}}x-data="{ expanded: false }"{{/if}}>
+            <div class="flex items-center justify-between">
+                <h3 class="text-xl font-bold block cursor-pointer" x-on:click="expanded = ! expanded">{{ question }}</h3>
+                <template x-if="! expanded">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>                      
+                </template>
+                <template x-if="expanded">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                    </svg>                                         
+                </template>
+            </div>
+            <div class="mt-2 lg:mt-4 text-lg" x-show="expanded" x-collapse>{{ answer }}</div>
+        </div>
+        {{ /items }}
+    </div>
+</div>

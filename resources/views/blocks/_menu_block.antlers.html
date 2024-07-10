@@ -1,0 +1,10 @@
+<div class="flex justify-end xl:justify-center space-x-6 2xl:space-x-8 3xl:space-x-10">
+    {{ nav:main select="title|url" }}
+    <a class="relative font-anton uppercase text-lg tracking-widest text-white" href="{{ url }}">
+        {{ title}}
+        {{ if is_current || is_parent}}
+        <span class="block w-full h-[2px] -bottom-2 bg-white"></span>
+        {{ /if }}
+    </a>
+    {{ /nav:main }}
+</div>

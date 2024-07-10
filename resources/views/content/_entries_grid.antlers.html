@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="my-basic grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 xl:gap-8">
+        {{ entries_field }}
+        <a class="relative block rounded-lg shadow overflow-hidden group" href="{{ url }}">
+            <div>
+                {{ main_image }}
+                <img
+                    class="lazy w-full h-full object-cover aspect-[4/5] md:aspect-square relative z-0"
+                    data-src="{{ glide:url preset="small" }}"
+                    data-srcset="{{ glide:url preset="small" }} 480w,
+                    {{ glide:url preset="medium" }} 720w"
+                    sizes="(max-width: 480px) 480px, 100vw" 
+                    alt="{{ alt }}"
+                    style="object-position: {{ focus_css }}"
+                />
+                {{ /main_image }}
+            </div>
+            <div class="absolute left-0 top-0 w-full h-full bg-gradient-to-b from-black/45 to-black/90 z-[1] opacity-60 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div class="absolute left-0 right-0 bottom-6 md:bottom-10 z-10">
+                <div class="flex justify-between items-center">
+                    <div class="px-6 xl:px-8">
+                        <div class="text-white text-xl xl:text-2xl 3xl:text-3xl font-bold mb-2">
+                            {{ title }}
+                        </div>
+                        <div 
+                            class="text-white lg:text-lg font-book"
+                        >
+                            {{ over_title | strip_tags:p }}
+                        </div>    
+                    </div>
+                    <div class="flex shrink-0 justify-end px-6 xl:px-8 relative">
+                        <div class="absolute right-0 left-0 mx-auto top-1/2 -translate-y-1/2 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                            {{ svg src="arrow-square-right" class="w-8 h-8 xl:w-10 xl:h-10 text-white" }}
+                        </div>
+                        <div class="absolute right-0 left-0 mx-auto top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            {{ svg src="arrow-square-right-filled" class="w-8 h-8 xl:w-10 xl:h-10 text-white" }}
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </a>
+        {{ /entries_field }}
+    </div>    
+</div>

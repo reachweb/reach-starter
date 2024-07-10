@@ -1,0 +1,48 @@
+<div class="relative">
+    <swiper-container class="gallery-slider" init="false">
+        {{ items }}
+        <swiper-slide class="w-[90%] md:w-[65%] xl:w-[25%] aspect-10/16 h-full rounded-lg overflow-hidden" lazy="true" scrollbar="true">
+            <img
+                class="lazy w-full h-full object-cover relative z-10 aspect-10/16"
+                data-src="{{ glide:url preset="small" }}"
+                data-srcset="{{ glide:url preset="small" }} 480w,
+                {{ glide:url preset="medium" }} 720w"
+                sizes="(max-width: 480px) 480px, 100vw" 
+                alt="{{ alt }}"
+                style="object-position: {{ focus_css }}"
+            />
+        </swiper-slide>
+        {{ /items }}
+    </swiper-container>
+</div>
+
+{{ push:scripts }}
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        var gallerySlider = document.querySelector(".gallery-slider");
+        Object.assign(gallerySlider, {
+            spaceBetween: 16,
+            autoHeight: false,
+            slidesPerView: "auto",
+            navigation: {
+                nextEl: ".gallery-button-next",
+                prevEl: ".gallery-button-prev",
+            },
+            scrollbar: {
+                el: ".gallery-scrollbar",
+                draggable: true,
+            },
+            injectStyles: [
+            `   .swiper-wrapper {
+                    height: auto !important;
+                }
+                .swiper {
+                    display: flex !important;
+                    overflow: visible !important;
+                }
+            `,],
+        });
+        gallerySlider.initialize();
+    });
+</script>
+{{ /push:scripts }}

@@ -1,0 +1,143 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: logo
+            field:
+              mode: grid
+              container: assets
+              max_files: 1
+              display: Logo
+              type: assets
+              always_save: false
+              localizable: false
+          -
+            handle: footer_logo
+            field:
+              container: assets
+              max_files: 1
+              display: 'Footer logo'
+              type: assets
+              localizable: false
+              always_save: false
+          -
+            handle: site_name
+            field:
+              display: 'Site name'
+              type: text
+              always_save: false
+              validate:
+                - required
+              localizable: false
+          -
+            handle: default_social_media_image
+            field:
+              mode: grid
+              container: assets
+              max_files: 1
+              display: 'Default social media image'
+              type: assets
+              always_save: false
+              localizable: false
+          -
+            handle: address
+            field:
+              remove_empty_nodes: false
+              display: Address
+              type: bard
+              always_save: false
+              localizable: false
+          -
+            handle: telephone
+            field:
+              display: Telephone
+              type: text
+              always_save: false
+              localizable: false
+          -
+            handle: email
+            field:
+              display: Email
+              type: text
+              always_save: false
+              localizable: false
+          -
+            handle: whatsup
+            field:
+              type: text
+              display: WhatsUp
+              localizable: false
+          -
+            handle: book_now_url
+            field:
+              max_items: 1
+              type: entries
+              display: 'Book now url'
+              localizable: false
+  footer:
+    display: Footer
+    sections:
+      -
+        fields:
+          -
+            handle: social_media
+            field:
+              mode: stacked
+              display: 'Social media'
+              type: grid
+              always_save: false
+              localizable: false
+              fields:
+                -
+                  handle: svg_name
+                  field:
+                    input_type: text
+                    antlers: false
+                    type: text
+                    display: 'Svg name'
+                    localizable: false
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                    validate:
+                      - required
+                -
+                  handle: link
+                  field:
+                    display: Link
+                    type: link
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    always_save: false
+                    localizable: false
+                    replicator_preview: true
+                    hide_display: false
+                    validate:
+                      - required
+                -
+                  handle: label
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Label
+                    type: text
+                    localizable: false
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    always_save: false
+                    replicator_preview: true
+                    hide_display: false
+                    validate:
+                      - required
+  global_text:
+    display: 'Global text'
+    sections:
+      -
+        display: 'New Section'

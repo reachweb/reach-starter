@@ -1,0 +1,69 @@
+<div class="relative bg-blue-600 text-white mt-12 lg:mt-16 xl:mt-20 pt-10 lg:pt-12 xl:pt-16 rounded-t-[48px]">
+    <div class="container grid grid-cols-12">
+        <div class="flex flex-col items-center lg:items-start col-span-12 lg:col-span-2">
+            <div class="mb-6 lg:mb-14 xl:mb-16">
+                <a href="/" title="Back to homepage">
+                    <img src="{{ site_config:logo:url }}" alt="{{ site_config:logo:alt }}" class="max-w-[180px] xl:max-w-[230px] 3xl:max-w-[300px]">
+                </a>
+            </div>
+            <div class="flex justify-start items-center gap-x-3 lg:gap-x-4 2xl:gap-x-8">
+                {{ site_config:social_media }}
+                <a href="{{ link }}" title="{{ title }}" class="text-white hover:text-az-orange transition-colors duration-300">
+                    {{ svg src="{{ svg_name }}" class="w-8 h-8 xl:w-10 xl:h-10" }}
+                </a>
+                {{ /site_config:social_media }}
+            </div>
+        </div>
+        <div class="col-span-12 lg:col-span-2 lg:col-start-4 pt-10 lg:pt-16 xl:pt-24">
+            <div class="text-lg xl:text-xl tracking-wider font-serif font-bold font-wide uppercase mb-4 lg:mb-8">
+                {{ "Contact" | trans }}
+            </div>
+            <div class="flex items-center mb-3 lg:mb-5">
+                {{ svg src="phone" class="w-6 h-6 mr-4 stroke-white" }}
+                <a href="tel:{{ site_config:telephone }}" class="lg:text-lg hover:text-orange-400 transition-colors duration-300">
+                    {{ site_config:telephone }}
+                </a>
+            </div>
+            <div class="flex items-center">
+                {{ svg src="email" class="w-6 h-6 mr-4 stroke-white" }}
+                <a href="mailto:{{ site_config:email }}" class="lg:text-lg hover:text-orange-400 transition-colors duration-300">
+                    {{ site_config:email }}
+                </a>
+            </div>
+        </div>
+        <div class="col-span-12 lg:col-span-3 lg:col-start-7 pt-10 lg:pt-16 xl:pt-24">
+            <div class="text-lg xl:text-xl tracking-wider font-serif font-bold font-wide uppercase mb-4 lg:mb-8">
+                {{ "Information" | trans }}
+            </div>
+            <div class="lg:text-lg 3xl:text-xl 3xl:gap-12">
+                {{ nav:footer }}
+                <a href="{{ url }}" class="block hover:text-orange-400 font-light transition-colors duration-300 mb-2 lg:mb-3 xl:mb-4">
+                    {{ title }}
+                </a>
+                {{ /nav:footer}}
+            </div>
+           
+        </div>      
+    </div>
+    <div class="mt-8 lg:mt-16 py-5 lg:py-8 border-t border-gray-100 border-opacity-10">
+        <div class="container flex justify-between w-full">
+            <div class="font-extralight text-sm lg:text-base">
+                Copyright &copy; {{ now | format('Y') }} {{ site_config:site_name }}
+            </div>
+            <div class="font-extralight text-sm lg:text-base lg:text-right">
+                <a href="https://reach.gr" target="_blank" title="Web design and developent by reach">
+                    Created by reach.
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container absolute right-0 left-0 -top-6 xl:-top-10 flex justify-end">
+        <button 
+            x-data
+            x-on:click="document.getElementById('app').scrollIntoView({ behavior: 'smooth' })"
+            class="flex items-center justify-center w-14 h-14 xl:w-20 xl:h-20 rounded-full bg-zinc-300 cursor-pointer hover:bg-orange-400 transition-colors duration-300"
+        >
+            {{ svg src="arrow-top" class="w-8 h-8 text-black" }}
+        </button>
+    </div>
+</div>

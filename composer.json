@@ -1,0 +1,9 @@
+{
+    "name": "reachweb/reach-starter",
+    "extra": {
+        "statamic": {
+            "name": "Reach Starter",
+            "description": "Reach Starter starter kit"
+        }
+    }
+}

@@ -1,0 +1,227 @@
+title: 'Content Block'
+fields:
+  -
+    handle: overview
+    field:
+      remove_empty_nodes: false
+      type: bard
+      display: Overview
+      localizable: false
+      sets:
+        faq:
+          display: FAQ
+          icon: alert-help-question
+          sets:
+            faq:
+              display: FAQ
+              fields:
+                -
+                  handle: title_stylized
+                  field:
+                    remove_empty_nodes: false
+                    type: bard
+                    display: 'Title stylized'
+                    localizable: false
+                -
+                  handle: items
+                  field:
+                    mode: stacked
+                    type: grid
+                    display: Items
+                    localizable: false
+                    fields:
+                      -
+                        handle: question
+                        field:
+                          type: text
+                          display: Question
+                          localizable: false
+                      -
+                        handle: answer
+                        field:
+                          remove_empty_nodes: false
+                          type: bard
+                          display: Answer
+                          localizable: false
+            column_text:
+              display: 'Column text'
+              icon: text-formatting-wrap-image-left
+              fields:
+                -
+                  handle: title
+                  field:
+                    remove_empty_nodes: true
+                    type: bard
+                    display: Title
+                    localizable: false
+                -
+                  handle: text
+                  field:
+                    remove_empty_nodes: true
+                    type: bard
+                    display: Text
+                    localizable: false
+            form:
+              display: Form
+              icon: form-drop-down-menu
+              fields:
+                -
+                  handle: form
+                  field:
+                    max_items: 1
+                    type: form
+                    display: Form
+                    localizable: false
+                -
+                  handle: text
+                  field:
+                    remove_empty_nodes: false
+                    type: bard
+                    display: Text
+                    localizable: false
+            text_with_image:
+              display: 'Text with image'
+              icon: text-formatting-image-left
+              fields:
+                -
+                  handle: text
+                  field:
+                    remove_empty_nodes: false
+                    type: bard
+                    display: Text
+                    localizable: false
+                -
+                  handle: image
+                  field:
+                    max_files: 1
+                    mode: grid
+                    container: assets
+                    type: assets
+                    display: Image
+                    localizable: false
+                -
+                  handle: image_position
+                  field:
+                    options:
+                      left: Left
+                      right: Right
+                    inline: true
+                    default: right
+                    type: radio
+                    display: 'Image position'
+                    localizable: false
+            image_gallery:
+              display: 'Image gallery'
+              icon: media-image-picture-orientation
+              fields:
+                -
+                  handle: images
+                  field:
+                    mode: grid
+                    container: assets
+                    type: assets
+                    display: Images
+                    localizable: false
+            numbered_text:
+              display: 'Numbered text'
+              icon: text-formatting-image-top
+              fields:
+                -
+                  handle: intro_text
+                  field:
+                    remove_empty_nodes: false
+                    type: bard
+                    display: 'Intro text'
+                    localizable: false
+                -
+                  handle: items
+                  field:
+                    mode: stacked
+                    type: grid
+                    display: Items
+                    localizable: false
+                    fields:
+                      -
+                        handle: title
+                        field:
+                          input_type: text
+                          antlers: false
+                          type: text
+                          display: Title
+                          localizable: false
+                          listable: hidden
+                          instructions_position: above
+                          visibility: visible
+                          replicator_preview: true
+                          hide_display: false
+                      -
+                        handle: text
+                        field:
+                          buttons:
+                            - h2
+                            - h3
+                            - bold
+                            - italic
+                            - unorderedlist
+                            - orderedlist
+                            - removeformat
+                            - quote
+                            - anchor
+                            - image
+                            - table
+                          smart_typography: false
+                          save_html: false
+                          inline: break
+                          toolbar_mode: fixed
+                          reading_time: false
+                          word_count: false
+                          fullscreen: true
+                          allow_source: true
+                          enable_input_rules: true
+                          enable_paste_rules: true
+                          remove_empty_nodes: false
+                          antlers: false
+                          link_noopener: false
+                          link_noreferrer: false
+                          target_blank: false
+                          always_show_set_button: false
+                          collapse: false
+                          previews: true
+                          type: bard
+                          display: Text
+                          localizable: false
+                          listable: hidden
+                          instructions_position: above
+                          visibility: visible
+                          replicator_preview: true
+                          hide_display: false
+            entries_grid:
+              display: 'Entries grid'
+              icon: layout-grid-dots
+              fields:
+                -
+                  handle: entries_field
+                  field:
+                    collections:
+                      - pages
+                      - destinations
+                      - boats
+                    type: entries
+                    display: 'Entries Field'
+                    localizable: false
+            call_to_action:
+              display: 'Call to action'
+              icon: fire-flame-burn-hot
+              fields:
+                -
+                  handle: text
+                  field:
+                    type: markdown
+                    display: Text
+                    localizable: false
+                -
+                  handle: show_phone
+                  field:
+                    type: toggle
+                    display: 'Show phone'
+                    localizable: false

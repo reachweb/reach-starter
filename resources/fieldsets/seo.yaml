@@ -1,0 +1,38 @@
+title: SEO
+fields:
+  -
+    handle: title
+    field:
+      display: Title
+      type: text
+      localizable: true
+  -
+    handle: description
+    field:
+      display: Description
+      type: textarea
+      character_limit: '160'
+      localizable: true
+  -
+    handle: social_media_image
+    field:
+      mode: grid
+      container: assets
+      display: 'Social media image'
+      type: assets
+      max_files: 1
+      localizable: false
+  -
+    handle: no_index
+    field:
+      display: 'No index'
+      type: toggle
+      width: 50
+      localizable: false
+  -
+    handle: hide_global_title
+    field:
+      display: 'Hide global title'
+      type: toggle
+      width: 50
+      localizable: false

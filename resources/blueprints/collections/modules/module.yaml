@@ -1,0 +1,47 @@
+title: Module
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              localizable: false
+              validate:
+                - required
+          -
+            handle: title_stylized
+            field:
+              type: markdown
+              display: 'Title stylized'
+              localizable: true
+              validate:
+                - required
+          -
+            handle: intro_text
+            field:
+              remove_empty_nodes: false
+              type: bard
+              display: 'Intro text'
+              localizable: true
+          -
+            handle: entries
+            field:
+              type: entries
+              display: Entries
+              localizable: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

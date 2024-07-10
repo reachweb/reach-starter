@@ -1,0 +1,18 @@
+<ul class="flex items-center flex-wrap">
+    {{ nav:breadcrumbs }}
+    {{ if is_current }}
+        <li class="font-bold">
+            <a href="{{ url }}">{{ title }}</a>
+        </li>
+    {{ else }}
+        <li class="font-book italic">
+            <a href="{{ url }}">{{ title }}</a>
+        </li>
+        <li class="mx-4 lg:mx-6">
+            <span class="font-extrabold">
+                /
+            </span>
+        </li>
+    {{ /if }}
+    {{ /nav:breadcrumbs }}
+</ul>

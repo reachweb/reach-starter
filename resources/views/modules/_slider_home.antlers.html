@@ -1,0 +1,25 @@
+<div class="w-full relative my-basic overflow-hidden">
+    {{ collection:modules slug:is="slider-home" limit="1" }}
+    <div class="container">
+        <div class="flex flex-col lg:flex-row justify-center lg:justify-between lg:space-x-8 pb-6 xl:pb-8 2xl:pb-12 ">
+            <div class="font-anton text-salt-blue text-xl xl:text-2xl 3xl:text-3xl text-center lg:text-left tracking-wide mb-3 lg:mb-0">
+                {{ title_stylized}}
+            </div>
+            <div class="font-serif text-lg xl:text-xl bard-text text-center lg:text-right text-balance">
+                {{ intro_text }}
+            </div>
+        </div>
+        <div>
+            {{ partial:slider/slider :items="entries" }}
+        </div>
+        <div class="flex items-center py-8 xl:py-10">
+            <div class="flex-shrink-0">
+                {{ partial:blocks/slider_buttons slider_name="slider" hover_color="hover:bg-orange-600" }}
+            </div>
+            <div class="w-full pl-4 md:pl-8 xl:pl-12">
+                <div class="destinations-scrollbar relative h-px w-full bg-zinc-400"></div>
+            </div>
+        </div>
+    </div>
+    {{ /collection:modules }}
+</div>

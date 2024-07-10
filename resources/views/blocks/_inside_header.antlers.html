@@ -1,0 +1,29 @@
+<div class="relative w-full h-[75svh]">
+    {{ partial:blocks/header :mode="mode ?? 'fixed'" }}
+    <div class="absolute left-0 top-0 h-full w-full z-0">
+        <div 
+            class="bg-cover w-full h-full lazy"
+            {{ if main_image:focus_css }}
+            style="background-position: {{ main_image:focus_css }}"
+            {{ /if }}
+            data-bg-set="url('{{ glide:main_image preset="large" }}') 1x, url('{{ glide:main_image preset="xlarge" }}') 2x"
+        >
+        </div>
+    </div>
+    <div class="absolute left-0 top-0 w-full h-full bg-gradient-to-b from-black/30 via-70% via-black/40 to-black/60 z-[1]"></div>
+    <div class="absolute left-0 right-0 bottom-0 z-[1]">
+        <div class="relative container">
+            <div class="">
+                {{ if over_title }}
+                <div class="text-white font-medium text-lg xl:text-xl tracking-widest uppercase">
+                    {{ over_title }}
+                </div>
+                {{ /if }}
+                <h1 class="title-home text-white uppercase font-serif font-bold text-3xl lg:text-5xl 2xl:text-7xl tracking-wide">
+                    {{ (title_stylized ?? title) | strip_tags('p') }}
+                </h1>
+            </div>
+        </div>
+        {{ partial:blocks/scroll }}
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<input 
+    class="form-input px-4 py-2 bg-zinc-100 border border-zinc-100 rounded-md !w-full focus:ring-orange-600 focus:border-orange-600" 
+    x-bind:id="field.handle" 
+    type="text" 
+    x-modelable="fullNumber"
+    x-model="submitFields[field.handle]"
+    x-on:change="getFullNumber"
+    x-ref="phoneInput"
+    x-data="{
+        intlTelInput: null,
+        fullNumber: '',
+        getFullNumber() {
+            this.fullNumber = this.intlTelInput.getNumber();
+        },
+    }"
+    x-init="
+        intlTelInput = window.intlTelInput($refs.phoneInput, {
+            utilsScript: 'vendor/intl-tel-input/utils.js',
+            showSelectedDialCode: false,
+            showFlags: true,
+            nationalMode: true,
+            strictMode: true,
+        });
+    "
+>

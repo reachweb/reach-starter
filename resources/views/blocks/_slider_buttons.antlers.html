@@ -1,0 +1,14 @@
+<div class="flex flex-row">
+    <div 
+        class="{{ slider_name }}-button-prev select-none border border-salt-black cursor-pointer 
+        rounded-l p-3 lg:p-4 group {{ hover_color ?? 'hover:bg-blue-500'}} transition-colors duration-300"
+    >
+        {{ svg src="arrow-narrow-left" class="w-6 xl:w-8 h-6 lg:h-8 text-salt-black group-hover:text-white transition-colors duration-300" }}
+    </div>
+    <div 
+        class="{{ slider_name }}-button-next select-none border-b border-r 
+        border-t rounded-r border-salt-black cursor-pointer p-3 lg:p-4 group {{ hover_color ?? 'hover:bg-blue-500'}} transition-colors duration-300"
+    >
+        {{ svg src="arrow-narrow-right" class="w-6 xl:w-8 h-6 lg:h-8 text-salt-black group-hover:text-white transition-colors duration-300" }}
+    </div>
+</div>

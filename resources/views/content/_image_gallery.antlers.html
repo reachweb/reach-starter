@@ -1,0 +1,62 @@
+<div class="my-basic w-full overflow-hidden">
+    <div class="container">
+        <div class="grid grid-cols-12 items-center mb-8 xl:mb-12 3xl:mb-16">
+            <div class="col-span-6">
+                <h3 class="uppercase font-bold font-serif text-salt-blue font-bold-serif text-2xl xl:text-3xl 2xl:text-4x leading-none xl:leading-none 2xl:leading-none">
+                    {{ "Gallery" | trans }}
+                </h3>
+            </div>
+            <div class="col-span-6">
+                <div class="flex justify-end">
+                    <div class="flex items-center justify-center relative z-10">
+                        {{ partial:blocks/slider_buttons slider_name="gallery" direction="vertical" }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="relative h-[45svh] lg:h-[65svh] xl:h-[70svh]">
+            <swiper-container class="gallery-slider h-full" init="false">
+                {{ images }}
+                <swiper-slide class="w-[90%] md:w-[55%] xl:w-[35%]" lazy="true" scrollbar="true">
+                    <img
+                        class="lazy w-full h-full relative z-0 object-cover object-center"
+                        data-src="{{ glide:url preset="small" }}"
+                        data-srcset="{{ glide:url preset='small' }} 480w,
+                                    {{ glide:url preset='medium' }} 720w,
+                                    {{ glide:url preset='large' }} 1920w,
+                                    {{ glide:url preset='xlarge' }} 2560w"
+                        sizes="(max-width: 480px) 480px, (max-width: 720px) 720px, (max-width: 1920px) 1920px, 2560px" 
+                        alt="{{ alt }}"
+                    />
+                </swiper-slide>
+                {{ /images }}
+            </swiper-container>
+        </div>
+    </div>
+    {{ push:scripts }}
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var gallery = document.querySelector(".gallery-slider");
+            Object.assign(gallery, {
+                spaceBetween: 16,
+                slidesPerView: "auto",
+                navigation: {
+                    nextEl: ".gallery-button-next",
+                    prevEl: ".gallery-button-prev",
+                },
+                scrollbar: {
+                    el: ".gallery-scrollbar",
+                    draggable: true,
+                },
+                injectStyles: [
+                `
+                    .swiper {
+                        overflow: visible !important;
+                    }
+                `,],
+            });
+            gallery.initialize();
+        });
+    </script>
+    {{ /push:scripts }}
+</div>

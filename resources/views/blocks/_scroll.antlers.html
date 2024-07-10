@@ -1,0 +1,8 @@
+<div x-data class="relative container mt-6 xl:mt-8 3xl:mt-16">
+    <div class="inline-flex flex-col items-center cursor-pointer" x-on:click="document.getElementById('content').scrollIntoView({ behavior: 'smooth' })">
+        <div class="vertical-text rotate-180 text-white text-xs font-semibold mb-2 ml-px">{{ "SCROLL" | trans }}</div>
+        <div class="relative w-px h-10 3xl:h-14 overflow-hidden bg-white">
+            <div class="absolute top-0 left-0 right-0 h-5 3xl:h-8 bg-blue-600 animate-bounce"></div>
+        </div>
+    </div>
+</div>

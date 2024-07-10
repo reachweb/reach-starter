@@ -1,0 +1,42 @@
+<div 
+    x-data 
+    x-cloak
+    x-bind:class="$store.menu.open ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'"
+    class="fixed left-0 top-0 w-full h-full flex items-center justify-center z-40
+    bg-black/10 transition-opacity duration-300 ease-out"
+>
+    <div 
+        class="relative w-full h-full transition-transform duration-500 ease-in-out" 
+        x-bind:class="$store.menu.open ? 'translate-x-0' : '-translate-x-full'">
+        <div class="absolute top-0 right-0 lg:right-auto bottom-0 left-0 mx-auto lg:w-[45vw] bg-blue-800 shadow-xl">
+            <div class="container pt-32">
+                <div class="flex flex-col">
+                    {{ nav:main }}
+                        <a 
+                            href="{{ url }}" 
+                            class="text-3xl lg:text-4xl 2xl:text-5xl border-b transition-colors duration-300 site-padding 
+                            font-serif font-bold font-extended py-4
+                            {{ if is_current }}text-gray-400 font-bold{{ else }}text-white hover:text-gray-400 border-white{{ /if}}"
+                        >
+                            {{ title }}
+                        </a>
+                    {{ /nav:main }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ push:scripts }}
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.store('menu', {
+            open: false,
+ 
+            toggle() {
+                this.open = ! this.open
+            }
+        })
+    })
+</script>
+{{ /push:scripts }}

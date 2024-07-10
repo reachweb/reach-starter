@@ -1,0 +1,10 @@
+<select
+    x-model="submitFields[field.handle]"
+    x-bind:id="field.handle" 
+    class="form-select bg-zinc-100 border border-zinc-100 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full py-2 px-4"
+>
+    <option selected>{{ "Please select" | trans }}</option>
+    <template x-for="(label, index)  in field.options">
+        <option x-bind:value="index" x-text="label ?? index"></option>
+    </template>
+</select>
