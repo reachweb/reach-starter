@@ -200,14 +200,10 @@ fields:
               icon: layout-grid-dots
               fields:
                 -
-                  handle: entries_field
+                  handle: entries
                   field:
-                    collections:
-                      - pages
-                      - destinations
-                      - boats
                     type: entries
-                    display: 'Entries Field'
+                    display: Entries
                     localizable: false
             call_to_action:
               display: 'Call to action'
